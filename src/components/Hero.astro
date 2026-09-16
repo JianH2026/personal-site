@@ -1,0 +1,13 @@
+---
+import { me } from "../data/content";
+---
+
+<section id="top" class="flex min-h-[80vh] flex-col items-center justify-center px-6 text-center">
+  <h1 data-hero class="font-display max-w-3xl text-5xl leading-tight md:text-7xl">
+    {me.name}
+  </h1>
+  <div data-hero class="mt-10 flex flex-wrap justify-center gap-3">
+    <a href="#projects" class="btn btn-primary">View my work</a>
+    <a href={me.resumeUrl} download="Jerry_Huang_Resume.pdf" class="btn btn-outline">Resume</a>
+  </div>
+</section>

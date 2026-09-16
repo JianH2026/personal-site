@@ -1,0 +1,41 @@
+---
+import { me } from "../data/content";
+---
+
+<header class="navbar sticky top-0 z-50 bg-base-100/70 backdrop-blur-md px-4 md:px-10">
+  <div class="navbar-start">
+    <a href="#top" class="font-display text-xl">{me.name}</a>
+  </div>
+  <nav class="navbar-end gap-2">
+    <a href="#about" class="btn btn-ghost btn-sm">About</a>
+    <a href="#projects" class="btn btn-ghost btn-sm">Projects</a>
+    <a href="#experience" class="btn btn-ghost btn-sm">Experience</a>
+    <button id="theme-toggle" type="button" class="btn btn-ghost btn-sm btn-circle" aria-label="Toggle light and dark mode"></button>
+  </nav>
+</header>
+
+<script>
+  // Dark theme is "monokai"; light theme is DaisyUI's built-in "light"
+  const DARK = "monokai";
+  const LIGHT = "light";
+  const btn = document.getElementById("theme-toggle") as HTMLButtonElement;
+
+  const currentTheme = () =>
+    document.documentElement.getAttribute("data-theme") ??
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT);
+
+  function renderIcon() {
+    btn.textContent = currentTheme() === DARK ? "☀️" : "🌙";
+  }
+
+  btn.addEventListener("click", () => {
+    const next = currentTheme() === DARK ? LIGHT : DARK;
+    document.documentElement.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
+    renderIcon();
+  });
+
+  renderIcon();
+</script>
