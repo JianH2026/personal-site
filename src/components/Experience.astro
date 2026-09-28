@@ -1,0 +1,24 @@
+---
+import { experience } from "../data/content";
+---
+
+<section id="experience" class="mx-auto max-w-3xl px-6 py-24">
+  <h2 data-reveal class="font-display mb-12 text-4xl">Experience</h2>
+  <ul class="space-y-10">
+    {
+      experience.map((job, i) => (
+        <li data-reveal>
+          <div>
+            <p class="text-sm text-base-content/60">{job.period}</p>
+            <h3 class="font-display text-xl">
+              {job.role} <span class="text-base-content/60">· {job.company}</span>
+            </h3>
+            <ul class="mt-2 list-disc space-y-1 pl-5 text-base-content/70">
+              {job.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

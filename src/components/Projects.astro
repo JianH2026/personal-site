@@ -1,0 +1,26 @@
+---
+import { projects } from "../data/content";
+---
+
+<section id="projects" class="mx-auto max-w-5xl px-6 py-24">
+  <h2 data-reveal class="font-display mb-12 text-4xl">Projects</h2>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+      projects.map((p) => (
+        <a href={p.link} target="_blank" rel="noopener noreferrer" data-reveal class="group">
+          <div class="card h-full bg-base-200 transition duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/20">
+            <div class="card-body">
+              <h3 class="card-title font-display">{p.title}</h3>
+              <p class="text-base-content/70">{p.description}</p>
+              <div class="card-actions mt-4 gap-2">
+                {p.tags.map((tag) => (
+                  <span class="badge badge-sm badge-primary badge-outline">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>

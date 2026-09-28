@@ -1,0 +1,23 @@
+---
+import { about, languages } from "../data/content";
+---
+
+<section id="about" class="mx-auto max-w-3xl px-6 py-24">
+  <h2 data-reveal class="font-display mb-12 text-4xl">About me</h2>
+  <div data-reveal class="space-y-5 text-lg leading-relaxed text-base-content/80">
+    {about.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+  <div data-reveal class="mt-10">
+    <h3 class="font-display mb-3 text-xl">Languages</h3>
+    <ul class="flex flex-wrap gap-3">
+      {
+        languages.map((l) => (
+          <li class="badge badge-lg badge-outline gap-2 py-4">
+            <span class="font-medium">{l.language} <span lang={l.language === "English" ? "en" : l.language === "Mandarin" ? "zh-TW" : "zh-HK"}>{l.native}</span></span>
+            <span class="text-base-content/60">· {l.level}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
